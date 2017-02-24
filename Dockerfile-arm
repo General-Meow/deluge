@@ -1,5 +1,5 @@
 # build: docker build -t generalmeow/deluge-arm:<TAG>
-# run: docker run -d -p 8112:8112 --name deluge -v <>:/root/incomplete -v <>:/root/complete -v <>:/root/torrents -v <>:/root/autoadd generalmeow/deluge-arm:<TAG>
+# run: docker run -d -p 8112:8112 --name deluge -v <>:/root/deluge generalmeow/deluge-arm:<TAG>
 FROM ubuntu:latest
 MAINTAINER Paul Hoang 2017-02-24
 EXPOSE 8112
@@ -9,7 +9,7 @@ RUN ["mkdir", "-p", "/root/deluge/incomplete"]
 RUN ["mkdir", "-p", "/root/deluge/complete"]
 RUN ["mkdir", "-p", "/root/deluge/torrents"]
 RUN ["mkdir", "-p", "/root/deluge/autoadd"]
-VOLUME ["/root/deluge/incomplete", "/root/deluge/complete", "/root/deluge/torrents", "/root/deluge/autoadd"]
+VOLUME ["/root/deluge"]
 
 RUN ["mkdir", "-p", "/root/.config/deluge"]
 ADD ["./files/root/.config/deluge/core.conf", "/root/.config/deluge"]
